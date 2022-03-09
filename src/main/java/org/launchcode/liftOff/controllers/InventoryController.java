@@ -1,11 +1,14 @@
 package org.launchcode.liftOff.controllers;
 
 
+import org.launchcode.liftOff.models.Inventory;
 import org.launchcode.liftOff.models.data.GenreRepository;
 import org.launchcode.liftOff.models.data.StyleRepository;
 import org.launchcode.liftOff.models.data.TitleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class InventoryController {
@@ -19,5 +22,10 @@ public class InventoryController {
     @Autowired
     public TitleRepository titleRepository;
 
+    @GetMapping("admin")
+    public String displayNewInventory (Model model) {
+        model.addAttribute(new Inventory());
+        return "gallery";
+    }
 
 }
