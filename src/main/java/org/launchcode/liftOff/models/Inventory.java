@@ -5,11 +5,8 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Inventory")
-public class Inventory {
+public class Inventory extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
 
     @Column(name = "category_name")
     private String categoryName;
@@ -21,13 +18,6 @@ public class Inventory {
     @Column(name = "image_url")
     private String imageUrl;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCategoryName() {
         return categoryName;

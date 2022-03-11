@@ -8,7 +8,7 @@ import org.launchcode.liftOff.models.data.TitleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class InventoryController {
@@ -22,10 +22,11 @@ public class InventoryController {
     @Autowired
     public TitleRepository titleRepository;
 
-    @GetMapping("admin")
+    @RequestMapping("admin")
     public String displayNewInventory (Model model) {
         model.addAttribute(new Inventory());
         return "gallery";
     }
+
 
 }

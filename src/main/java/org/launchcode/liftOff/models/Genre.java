@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Genre {
+public class Genre extends AbstractEntity{
 
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany
     private List<Inventory> Inventories = new ArrayList<>();
 
     public List<Inventory> getInventorys() {

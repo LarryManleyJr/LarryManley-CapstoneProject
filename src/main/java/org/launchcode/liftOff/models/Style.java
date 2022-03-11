@@ -1,4 +1,9 @@
 package org.launchcode.liftOff.models;
 
-public class Style {
+import javax.persistence.Entity;
+
+@Entity
+public class Style extends AbstractEntity{
+
+
 }
