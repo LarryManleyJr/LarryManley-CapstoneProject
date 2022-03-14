@@ -2,14 +2,14 @@ package org.launchcode.liftOff.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Inventory")
 public class Inventory extends AbstractEntity {
 
 
-    @Column(name = "category_name")
-    private String categoryName;
 
     @NotBlank(message = "Needs description for artwork")
     private String description;
@@ -18,14 +18,10 @@ public class Inventory extends AbstractEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @ManyToMany
+    private List<Genre> genres = new ArrayList<>();
 
-    public String getCategoryName() {
-        return categoryName;
-    }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
 
     public String getDescription() {
         return description;

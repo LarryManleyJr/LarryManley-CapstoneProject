@@ -25,7 +25,7 @@ public class InventoryController {
     @RequestMapping("admin")
     public String displayNewInventory (Model model) {
         model.addAttribute(new Inventory());
-        return "gallery";
+        return "admin";
     }
 
 
