@@ -21,6 +21,16 @@ public class Inventory extends AbstractEntity {
     @ManyToMany
     private List<Genre> genres = new ArrayList<>();
 
+    private List<Style> styles = new ArrayList<>();
+
+    public Inventory() {
+    }
+
+    public Inventory (List<Style> someStyle, List<Genre> someGenre){
+        super();
+        this.genres = someGenre;
+        this.styles = someStyle;
+    }
 
 
     public String getDescription() {
