@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
+import static org.launchcode.liftOff.controllers.GalleryController.columnChoices;
+
 
 @Controller
 @RequestMapping("search")
@@ -21,7 +23,7 @@ public class SearchController {
     
     @RequestMapping("")
     public String search (Model model) {
-        model.addAttribute("columns", columnChoice);
+        model.addAttribute("columns", columnChoices);
         return "search";
     }
     
