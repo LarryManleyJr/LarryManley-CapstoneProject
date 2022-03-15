@@ -6,5 +6,14 @@
 </head>
 <body>
 
+<div class="container body-content">
+    <h2>TechJobs</h2>
+    <ul>
+        <li th:each="inventory : ${inventories}">
+            <a th:href="@{'/view/' + ${inventory.id}}" th:text="${inventory.name}"></a>
+        </li>
+    </ul>
+
+</div>
 </body>
 </html>

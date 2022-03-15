@@ -19,16 +19,17 @@ public class Inventory extends AbstractEntity {
     private String imageUrl;
 
     @ManyToMany
-    private List<Genre> genres = new ArrayList<>();
+    private Genre genre;
 
+    @ManyToMany
     private List<Style> styles = new ArrayList<>();
 
     public Inventory() {
     }
 
-    public Inventory (List<Style> someStyle, List<Genre> someGenre){
+    public Inventory (List<Style> someStyle, Genre someGenre){
         super();
-        this.genres = someGenre;
+        this.genre = someGenre;
         this.styles = someStyle;
     }
 
@@ -47,5 +48,21 @@ public class Inventory extends AbstractEntity {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Style> getStyles() {
+        return styles;
+    }
+
+    public void setStyles(List<Style> styles) {
+        this.styles = styles;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }

@@ -5,10 +5,39 @@
     <title>The Shop: Gallery</title>
 </head>
 <body>
-<h1>Yo Yo </h1>
-    <div>
-        <input th:field="${addInventory}"/>
-    </div>
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "centered">View Inventory by Categories</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th>All</th>
+        <th>Genre</th>
+        <th>Style</th>
+    </tr>
+
+    <tr>
+        <td>
+            <li>
+                <a th:href="@{/list/inventories(column='All',value='View All')}">View All</a>
+            </li>
+        </td>
+        <td>
+            <li th:each="genre : ${genres}">
+                <a th:href="@{/list/inventories(column=genre,value=${genre.name})}" th:text="${genre.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="style : ${styles}">
+                <a th:href="@{/list/inventories(column=style,value=${style.name})}" th:text="${style.name}"></a>
+            </li>
+        </td>
+    </tr>
+</table>
+
 
 </body>
 </html>
