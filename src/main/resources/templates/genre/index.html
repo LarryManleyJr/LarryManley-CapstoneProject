@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<p th:unless="${genres} and ${genres.size()}">no genres!</p>
+
+<div class="container body-content">
+    <h2>Genres</h2>
+    <ul>
+        <li th:each="genre : ${genres}">
+            <a th:href="@{'/genres/view/' + ${genre.id}}" th:text="${genre.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/genres/add'}">Add Genres</a>
+
+</div>
 
 </body>
 </html>

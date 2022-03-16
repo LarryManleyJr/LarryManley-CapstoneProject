@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<h1 th:text="${'Genre: ' + genre.name}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="inventory-listing">
+    <p th:text="${'Name: ' + genre.name}"></p>
+    <p th:text="${'Colorway: ' + genre.colorway}"></p>
+</div>
 
 </body>
 </html>

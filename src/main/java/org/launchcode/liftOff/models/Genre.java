@@ -1,8 +1,11 @@
 package org.launchcode.liftOff.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,12 @@ import java.util.List;
 public class Genre extends AbstractEntity{
 
     @OneToMany
+    @JoinColumn(name = "genre_id")
     private List<Inventory> Inventories = new ArrayList<>();
+
+    @NotBlank(message = "Which colorway was used?")
+    @Size(min = 3, max = 25, message = "Colorway must be between 3 and 25 characters")
+    private String colorway;
 
     public Genre () {
     }
@@ -21,5 +29,13 @@ public class Genre extends AbstractEntity{
 
     public void setInventories(List<Inventory> inventories) {
         Inventories = inventories;
+    }
+
+    public String getColorway() {
+        return colorway;
+    }
+
+    public void setColorway(String colorway) {
+        this.colorway = colorway;
     }
 }
