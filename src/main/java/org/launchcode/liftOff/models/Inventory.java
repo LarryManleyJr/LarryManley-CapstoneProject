@@ -14,11 +14,11 @@ public class Inventory extends AbstractEntity {
     @NotBlank(message = "Needs description for artwork")
     private String description;
 
-    @NotBlank(message = "Image must be uploaded")
+//    @NotBlank(message = "Image must be uploaded")
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToMany
+    @ManyToOne
     private Genre genre;
 
     @ManyToMany
@@ -27,8 +27,10 @@ public class Inventory extends AbstractEntity {
     public Inventory() {
     }
 
-    public Inventory (List<Style> someStyle, Genre someGenre){
+    public Inventory (String aDescription, String anImageUrl, List<Style> someStyle, Genre someGenre){
         super();
+        this.description = aDescription;
+        this.imageUrl = anImageUrl;
         this.genre = someGenre;
         this.styles = someStyle;
     }

@@ -17,7 +17,9 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
+@RequestMapping("admin")
 public class InventoryController {
 
     @Autowired
@@ -29,7 +31,7 @@ public class InventoryController {
     @Autowired
     public InventoryRepository inventoryRepository;
 
-    @RequestMapping("")
+    @GetMapping("")
     public String displayNewInventory (Model model) {
         model.addAttribute(new Inventory());
         return "admin";
@@ -45,8 +47,13 @@ public class InventoryController {
     }
 
     @PostMapping("add")
-    public String processAddInventoryForm (@ModelAttribute @Valid Inventory newInventory,
-                                           Errors errors, Model model, @RequestParam int genreId, @RequestParam List<Integer> styles) {
+    public String processAddInventoryForm (@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model,
+                                          @RequestParam String name, @RequestParam String description,
+                                           @RequestParam String imageUrl,@RequestParam int genreId, @RequestParam List<Integer> styles) {
+
+                newInventory.setName(name);
+        newInventory.setDescription(description);
+        newInventory.setImageUrl(imageUrl);
         Optional<Genre> optionalGenre = genreRepository.findById(genreId);
         if (optionalGenre.isPresent()){
             Genre genre = optionalGenre.get();

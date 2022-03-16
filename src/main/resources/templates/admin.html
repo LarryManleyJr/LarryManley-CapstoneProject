@@ -1,29 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Owner Tools</title>
+    <title>List View</title>
 </head>
 <body>
-<h1>Add Inventory</h1>
+<div class="container body-content">
 
-<form method="post">
-    <div>
-        <label th:for="name">Name</label>
-        <input th:field="${inventory.name}"/>
-    </div>
+  <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <div>
-        <label th:for="description">Description</label>
-        <input th:field="${inventory.description}"/>
-    </div>
+  <table class="inventory-listing">
+    <tr th:each="inventory : ${inventories}">
+      <td>
+        <p>
+          Inventory Id:
+          <a th:href="@{'/view/' + ${inventory.id}}" th:text="${inventory.id}"></a>
+        </p>
+        <p th:text="${'Name: ' + inventory.name}"></p>
+        <p>
+          Genre:
+          <a th:href="@{'/genre/view/' + ${inventory.genre.id}}" th:text="${inventory.genre.name}"></a>
+        </p>
+        <p>
+          Styles:
+        <ul th:each="style : ${inventory.styles}">
+          <li>
+            <a th:href="@{'/styles/view/' + ${style.id}}" th:text="${style.name}"></a>
+          </li>
+        </ul>
+        </p>
+      </td>
+    </tr>
+  </table>
 
-    <div>
-        <label th:for="imageUrl">URL</label>
-        <input th:field="${inventory.imageUrl}"/>
-    </div>
+</div>
 
-    <input type="submit" value="Add Inventory" />
-</form>
 </body>
 </html>

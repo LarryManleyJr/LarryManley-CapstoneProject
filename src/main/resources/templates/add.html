@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Tools</title>
+</head>
+<body>
+<h1>Add Inventory</h1>
+
+<form method="post">
+    <div>
+        <label th:for="name">Name</label>
+        <input th:field="${inventory.name}"/>
+    </div>
+
+    <div>
+        <label th:for="description">Description</label>
+        <input th:field="${inventory.description}"/>
+    </div>
+
+    <div>
+        <label th:for="imageUrl">URL</label>
+        <input th:field="${inventory.imageUrl}"/>
+    </div>
+
+    <div>
+        <label th:for="genre">Genre</label>
+        <input th:field="${inventory.genre}"/>
+    </div>
+
+    <div>
+        <label th:for="style">Style</label>
+        <input th:field="${inventory.styles}"/>
+    </div>
+    <input type="submit" value="Add Inventory" />
+</form>
+</body>
+</html>
