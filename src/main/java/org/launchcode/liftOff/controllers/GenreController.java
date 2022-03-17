@@ -29,13 +29,12 @@ public class GenreController {
     public String index (Model model){
         model.addAttribute("title", "All Genres");
         model.addAttribute("genres", genreRepository.findAll());
-        return "index";
+        return "genres/index";
     }
 
     @PostMapping("add")
     public String processAddGenreForm(@ModelAttribute @Valid Genre newGenre,
                                       Errors errors, Model model) {
-
         if(errors.hasErrors()) {
             return "genres/add";
         }

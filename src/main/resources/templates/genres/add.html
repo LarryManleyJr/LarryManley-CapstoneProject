@@ -5,7 +5,7 @@
     <title>Genre</title>
 </head>
 <body>
-
+<h1>Add Genre</h1>
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-group">
-        <label th:for="colorway">Employer Location</label>
+        <label th:for="colorway">Genre Colorway</label>
         <input class="form-control" th:field="${genre.colorway}" />
         <span th:errors="${genre.colorway}" class="error"></span>
     </div>

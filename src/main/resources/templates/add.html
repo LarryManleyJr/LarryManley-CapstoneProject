@@ -23,14 +23,22 @@
         <input th:field="${inventory.imageUrl}"/>
     </div>
 
-    <div>
+    <div class="form-group">
         <label th:for="genre">Genre</label>
-        <input th:field="${inventory.genre}"/>
+        <th:block th:each="genre : ${genres}">
+            <input type="checkbox" name="genres" th:value="${genre.id}">
+            <label th:text="${genre.name}"></label>
+        </th:block>
+        <a th:href="@{'/genres/add'}">Add Genres</a>
     </div>
 
-    <div>
-        <label th:for="style">Style</label>
-        <input th:field="${inventory.styles}"/>
+    <div class="form-group">
+        <label th:for="style">Styles</label>
+        <th:block th:each="style : ${styles}">
+            <input type="checkbox" name="styles" th:value="${style.id}">
+            <label th:text="${style.name}"></label>
+        </th:block>
+        <a th:href="@{'/styles/add'}">Add Styles</a>
     </div>
     <input type="submit" value="Add Inventory" />
 </form>

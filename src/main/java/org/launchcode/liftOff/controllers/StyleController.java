@@ -29,7 +29,7 @@ public class StyleController {
     public String index (Model model){
         model.addAttribute("title", "All Genres");
         model.addAttribute("title", styleRepository.findAll());
-        return "index";
+        return "styles/index";
     }
 
     @PostMapping("add")
@@ -44,13 +44,12 @@ public class StyleController {
 
     @GetMapping("view/{styleId}")
     public String displayViewStyle(Model model, @PathVariable int styleId) {
-
         Optional optStyle = styleRepository.findById(styleId);
         if (optStyle.isPresent()){
             Style style = (Style) optStyle.get();
             model.addAttribute("style", style);
             return "styles/view";
-        } else {
+        } else{
             return "redirect:../";
         }
     }

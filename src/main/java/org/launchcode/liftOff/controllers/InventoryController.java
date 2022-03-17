@@ -49,16 +49,17 @@ public class InventoryController {
     @PostMapping("add")
     public String processAddInventoryForm (@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model,
                                           @RequestParam String name, @RequestParam String description,
-                                           @RequestParam String imageUrl,@RequestParam int genreId, @RequestParam List<Integer> styles) {
+                                           @RequestParam String imageUrl, @RequestParam List<Integer> styles) {
 
                 newInventory.setName(name);
         newInventory.setDescription(description);
         newInventory.setImageUrl(imageUrl);
-        Optional<Genre> optionalGenre = genreRepository.findById(genreId);
-        if (optionalGenre.isPresent()){
-            Genre genre = optionalGenre.get();
-            newInventory.setGenre(genre);
-        }
+//        Optional<Genre> optionalGenre = genreRepository.findById(genreId);
+//        if (optionalGenre.isPresent()){
+//            Genre genre = optionalGenre.get();
+//            newInventory.setGenre(genre);
+        // @RequestParam int genreId,
+//        }
         List<Style> styleObjs = (List<Style>) styleRepository.findAllById(styles);
             newInventory.setStyles(styleObjs);
 

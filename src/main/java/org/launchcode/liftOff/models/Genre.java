@@ -1,8 +1,6 @@
 package org.launchcode.liftOff.models;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -12,8 +10,7 @@ import java.util.List;
 @Entity
 public class Genre extends AbstractEntity{
 
-    @OneToMany
-    @JoinColumn(name = "genre_id")
+    @OneToMany(mappedBy = "genre")
     private List<Inventory> Inventories = new ArrayList<>();
 
     @NotBlank(message = "Which colorway was used?")

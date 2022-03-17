@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>List of Genres</title>
 </head>
 <body>
 <h1 th:text="${'Genre: ' + genre.name}">Default Title</h1>
@@ -12,7 +12,13 @@
 <div class="inventory-listing">
     <p th:text="${'Name: ' + genre.name}"></p>
     <p th:text="${'Colorway: ' + genre.colorway}"></p>
+    <p>Inventory:
+    <ul>
+        <li th:each="inventory : ${genre.inventories}">
+            <a th:href="@{'/view/' + ${inventory.id}}" th:text="${inventory.name}"></a>
+        </li>
+    </ul>
+    </p>
 </div>
-
 </body>
 </html>
