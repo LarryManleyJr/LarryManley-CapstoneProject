@@ -70,7 +70,7 @@ public class InventoryController {
         }
         inventoryRepository.save(newInventory);
 
-        return "redirect:";
+        return "gallery";
     }
 
     @GetMapping("view/{inventoryId}")
