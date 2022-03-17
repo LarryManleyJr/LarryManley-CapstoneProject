@@ -2,8 +2,7 @@ package org.launchcode.liftOff.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "Inventory")
@@ -21,18 +20,18 @@ public class Inventory extends AbstractEntity {
     @ManyToOne
     private Genre genre;
 
-    @ManyToMany
-    private List<Style> styles = new ArrayList<>();
+    @ManyToOne
+    private Style style;
 
     public Inventory() {
     }
 
-    public Inventory (String aDescription, String anImageUrl, List<Style> someStyle, Genre someGenre){
+    public Inventory (String aDescription, String anImageUrl, Style someStyle, Genre someGenre){
         super();
         this.description = aDescription;
         this.imageUrl = anImageUrl;
         this.genre = someGenre;
-        this.styles = someStyle;
+        this.style = someStyle;
     }
 
 
@@ -52,12 +51,12 @@ public class Inventory extends AbstractEntity {
         this.imageUrl = imageUrl;
     }
 
-    public List<Style> getStyles() {
-        return styles;
+    public Style getStyle() {
+        return style;
     }
 
-    public void setStyles(List<Style> styles) {
-        this.styles = styles;
+    public void setStyle(Style style) {
+        this.style = style;
     }
 
     public Genre getGenre() {

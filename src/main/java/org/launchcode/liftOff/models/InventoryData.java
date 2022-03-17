@@ -31,7 +31,7 @@ public class InventoryData {
             } else if (fieldName.equals("genre")) {
                 theValue = inventory.getGenre().toString();
             } else {
-                theValue = inventory.getStyles().toString();
+                theValue = inventory.getStyle().toString();
             }
             return theValue;
         }
@@ -47,7 +47,7 @@ public class InventoryData {
                 results.add(inventory);
             } else if (inventory.getGenre().toString().toLowerCase().contains(lower_val)) {
                 results.add(inventory);
-            } else if (inventory.getStyles().toString().toLowerCase().contains(lower_val)) {
+            } else if (inventory.getStyle().toString().toLowerCase().contains(lower_val)) {
                 results.add(inventory);
             } else if (inventory.toString().toLowerCase().contains(lower_val)){
             results.add(inventory);

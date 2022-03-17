@@ -28,7 +28,7 @@ public class StyleController {
     @GetMapping("")
     public String index (Model model){
         model.addAttribute("title", "All Genres");
-        model.addAttribute("title", styleRepository.findAll());
+        model.addAttribute("styles", styleRepository.findAll());
         return "styles/index";
     }
 

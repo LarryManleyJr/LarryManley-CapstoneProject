@@ -7,8 +7,6 @@
 <body>
 <h1 th:text="${'Style: ' + style.name}">Default Title</h1>
 
-<nav th:replace="fragments :: page-header"></nav>
-
 <div class="inventory-listing">
     <p th:text="${'Name: ' + style.name}"></p>
     <p th:text="${'Description: ' + style.description}"></p>

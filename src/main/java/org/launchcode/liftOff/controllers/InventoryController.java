@@ -49,20 +49,21 @@ public class InventoryController {
     @PostMapping("add")
     public String processAddInventoryForm (@ModelAttribute @Valid Inventory newInventory, Errors errors, Model model,
                                           @RequestParam String name, @RequestParam String description,
-                                           @RequestParam String imageUrl, @RequestParam List<Integer> styles) {
+                                           @RequestParam String imageUrl, @RequestParam int genres, @RequestParam int styles) {
 
                 newInventory.setName(name);
         newInventory.setDescription(description);
         newInventory.setImageUrl(imageUrl);
-//        Optional<Genre> optionalGenre = genreRepository.findById(genreId);
-//        if (optionalGenre.isPresent()){
-//            Genre genre = optionalGenre.get();
-//            newInventory.setGenre(genre);
-        // @RequestParam int genreId,
-//        }
-        List<Style> styleObjs = (List<Style>) styleRepository.findAllById(styles);
-            newInventory.setStyles(styleObjs);
-
+        Optional<Genre> optionalGenre = genreRepository.findById(genres);
+        if (optionalGenre.isPresent()){
+            Genre genre = optionalGenre.get();
+            newInventory.setGenre(genre);
+        }
+        Optional<Style> optionalStyle = styleRepository.findById(styles);
+        if (optionalStyle.isPresent()) {
+            Style style = optionalStyle.get();
+            newInventory.setStyle(style);
+        }
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Inventory");
             return "add";
@@ -71,8 +72,10 @@ public class InventoryController {
 
         return "redirect:";
     }
+
     @GetMapping("view/{inventoryId}")
     public String displayViewInventory(Model model, @PathVariable int inventoryId) {
         return "view";
     }
 }
+
