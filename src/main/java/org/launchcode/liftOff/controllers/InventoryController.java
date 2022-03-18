@@ -66,7 +66,7 @@ public class InventoryController {
         }
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Inventory");
-            return "add";
+            return "admin/add";
         }
         inventoryRepository.save(newInventory);
 
@@ -77,5 +77,36 @@ public class InventoryController {
     public String displayViewInventory(Model model, @PathVariable int inventoryId) {
         return "view";
     }
+    @GetMapping("delete")
+    public String displayDeleteInventoryForm(Model model) {
+        model.addAttribute("title", "Delete Inventory");
+        model.addAttribute("inventories", inventoryRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("styles", styleRepository.findAll());
+        return "delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] inventoryIds,
+                                          @RequestParam(required = false) int[] genreId,
+                                          @RequestParam(required = false) int[] styleIds) {
+
+        if (inventoryIds != null) {
+            for (int id : inventoryIds) {
+               inventoryRepository.deleteById(id);
+            } if (genreId != null) {
+                for(int id : genreId) {
+                    genreRepository.deleteById(id);
+                } if (styleIds != null) {
+                    for (int id : styleIds) {
+                        styleRepository.deleteById(id);
+                    }
+                }
+            }
+        }
+        return "redirect:../";
+    }
+
+
 }
 

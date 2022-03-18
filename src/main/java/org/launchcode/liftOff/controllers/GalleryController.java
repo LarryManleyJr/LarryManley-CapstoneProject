@@ -36,8 +36,8 @@ public class GalleryController {
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("style", styleRepository.findAll());
-        model.addAttribute("genre", genreRepository.findAll());
+        model.addAttribute("styles", styleRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
         return "gallery";
     }
 

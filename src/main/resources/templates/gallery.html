@@ -8,35 +8,30 @@
 
 <div class="container body-content">
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-    <h2 class = "centered">View Inventory by Category</h2>
+    <h2 class = "centered">Inventory</h2>
 </div>
 
 <table class="centeredTable">
     <tr>
-        <th>All</th>
+        <th>Inventory</th>
         <th>Genre</th>
         <th>Style</th>
     </tr>
 
     <tr>
         <td>
-            <li>
-                <a th:href="@{/list/inventory(column='All',value='View All')}">View All</a>
+            <li th:each="inventory : ${inventories}">
+                <a th:href="@{/admin/inventories(column=style,value=${inventory.name})}" th:text="${inventory.name}"></a>
             </li>
         </td>
         <td>
-            <li>
-                <a>View All</a>
+            <li th:each="genre : ${genres}">
+                <a th:href="@{'/genres/view/' + ${genre.id}}" th:text="${genre.name}"></a>
             </li>
         </td>
-<!--        <td>-->
-<!--            <li>-->
-<!--                <a th:href="@{/admin/inventories(column=genre,value=${genre.name})}" th:text="${genre.name}">G-List</a>-->
-<!--            </li>-->
-<!--        </td>-->
         <td>
             <li th:each="style : ${styles}">
-                <a th:href="@{/admin/inventories(column=style,value=${style.name})}" th:text="${style.name}">S-List</a>
+                <a th:href="@{/admin/inventories(column=style,value=${style.name})}" th:text="${style.name}"></a>
             </li>
         </td>
     </tr>

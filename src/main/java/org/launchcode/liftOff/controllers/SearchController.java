@@ -3,7 +3,9 @@ package org.launchcode.liftOff.controllers;
 
 import org.launchcode.liftOff.models.Inventory;
 import org.launchcode.liftOff.models.InventoryData;
+import org.launchcode.liftOff.models.data.GenreRepository;
 import org.launchcode.liftOff.models.data.InventoryRepository;
+import org.launchcode.liftOff.models.data.StyleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +22,18 @@ public class SearchController {
     
     @Autowired
     private InventoryRepository inventoryRepository;
+
+    @Autowired
+    private StyleRepository styleRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
     
     @RequestMapping("")
     public String search (Model model) {
         model.addAttribute("columns", columnChoices);
+        model.addAttribute("styles", styleRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
         return "search";
     }
     
