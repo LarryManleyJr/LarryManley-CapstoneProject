@@ -13,8 +13,9 @@
     <p>Inventory:
     <ul>
         <li th:each="inventory : ${genre.inventories}">
+            <img th:src=${inventory.imageUrl}>
+            <br>
             <a th:href="@{'/view/' + ${inventory.id}}" th:text="${inventory.name}"></a>
-<!--            <img src="${inventory.image_url}">-->
         </li>
     </ul>
     </p>

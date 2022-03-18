@@ -13,6 +13,8 @@
     <p> Inventory:
     <ul>
         <li th:each="inventory : ${style.inventories}">
+            <img th:src=${inventory.imageUrl}>
+            <br>
             <a th:href="@{'/view/' + ${inventory.id}}" th:text="${inventory.name}"></a>
         </li>
     </ul>
