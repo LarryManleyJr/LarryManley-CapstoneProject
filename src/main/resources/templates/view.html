@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="Inventory-listing">
+    <p th:text="${'ID: ' + inventory.id}"></p>
+    <p th:text="${'Name: ' + inventory.name}"></p>
+    <p>
+        Genre: <a th:href="@{'/genres/view/' + ${inventory.genre.id}}" th:text="${inventory.genre.name}"></a>
+    </p>
+    <p> Styles:
+    <ul>
+        <li th:each="style : ${inventory.styles}">
+            <a th:href="@{'/styles/view/' + ${style.id}}" th:text="${style.name}"></a>
+        </li>
+    </ul>
+    </p>
+</div>
+
+
+
+
+</body>
+</html>

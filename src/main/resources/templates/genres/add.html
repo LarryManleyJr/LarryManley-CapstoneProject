@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Genre</title>
+</head>
+<body>
+<h1>Add Genre</h1>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Genre Name</label>
+        <input class="form-control" th:field="${genre.name}" />
+        <span th:errors="${genre.name}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="colorway">Genre Colorway</label>
+        <input class="form-control" th:field="${genre.colorway}" />
+        <span th:errors="${genre.colorway}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Genre" />
+</form>
+
+
+</body>
+</html>

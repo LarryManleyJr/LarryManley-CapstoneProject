@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>The Shop: Gallery</title>
+</head>
+<body>
+
+<div class="container body-content">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "centered">Inventory by Categories</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th>Inventory</th>
+        <th>Genre</th>
+        <th>Style</th>
+    </tr>
+
+    <tr>
+        <td>
+            <li th:each="inventory : ${inventories}">
+                <a th:href="@{/admin/inventories(column=style,value=${inventory.name})}" th:text="${inventory.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="genre : ${genres}">
+                <a th:href="@{'/genres/view/' + ${genre.id}}" th:text="${genre.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="style : ${styles}">
+                <a th:href="@{'/styles/view/' + ${style.id}}" th:text="${style.name}"></a>
+            </li>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>
