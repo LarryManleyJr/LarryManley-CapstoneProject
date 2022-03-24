@@ -13,17 +13,11 @@
 
 <table class="centeredTable">
     <tr>
-        <th>Inventory</th>
         <th>Genre</th>
         <th>Style</th>
     </tr>
 
     <tr>
-        <td>
-            <li th:each="inventory : ${inventories}">
-                <a th:href="@{/admin/inventories(column=style,value=${inventory.name})}" th:text="${inventory.name}"></a>
-            </li>
-        </td>
         <td>
             <li th:each="genre : ${genres}">
                 <a th:href="@{'/genres/view/' + ${genre.id}}" th:text="${genre.name}"></a>
