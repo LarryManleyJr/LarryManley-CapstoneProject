@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Deletion Page</title>
 </head>
 <form method="post">
 
@@ -14,22 +14,22 @@
             </label>
         </div>
     </th:block>
-    <th:block th:each="genre : ${genres}">
-        <div>
-            <label>
-                <span th:text="${genre.name}"></span>
-                <input type="checkbox" name="genreId" th:value="${genre.id}" class="form-control">
-            </label>
-        </div>
-    </th:block>
-    <th:block th:each="style : ${styles}">
-        <div>
-            <label>
-                <span th:text="${style.name}"></span>
-                <input type="checkbox" name="styleIds" th:value="${style.id}" class="form-control">
-            </label>
-        </div>
-    </th:block>
+<!--    <th:block th:each="genre : ${genres}">-->
+<!--        <div>-->
+<!--            <label>-->
+<!--                <span th:text="${genre.name}"></span>-->
+<!--                <input type="checkbox" name="genreId" th:value="${genre.id}" class="form-control">-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </th:block>-->
+<!--    <th:block th:each="style : ${styles}">-->
+<!--        <div>-->
+<!--            <label>-->
+<!--                <span th:text="${style.name}"></span>-->
+<!--                <input type="checkbox" name="styleIds" th:value="${style.id}" class="form-control">-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </th:block>-->
     <input type="submit" value="Delete">
 </form>
 
